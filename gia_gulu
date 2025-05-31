@@ -1,0 +1,614 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gulu Institution of Agriculture</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-earth-brown: #5c4033;
+            --color-forest-green: #2c5e1a;
+            --color-wheat: #f5deb3;
+            --color-clay: #b87333;
+            --color-leaf: #71a95a;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #fcfaf7;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Merriweather', serif;
+        }
+        
+        .hero-pattern {
+            background-color: var(--color-forest-green);
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .course-card {
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(92, 64, 51, 0.1);
+        }
+        
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .logo-container {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .logo-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f0f9f0;
+            color: var(--color-forest-green);
+            font-weight: bold;
+            border: 2px dashed var(--color-forest-green);
+            border-radius: 8px;
+        }
+        
+        .btn-primary {
+            background-color: var(--color-forest-green);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: #234816;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background-color: var(--color-clay);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #9e6329;
+            transform: translateY(-2px);
+        }
+        
+        .wood-bg {
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='20' viewBox='0 0 100 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21.184 20c.357-.13.72-.264.888-.14 1.005-.174 1.837-.83 2.04-1.86.173-.888.937-1.568 1.712-1.566.776.002 1.54.684 1.712 1.572.203 1.03 1.033 1.685 2.04 1.86.344.058.7.132.89.14.16.006.32.01.48.01.895 0 1.778-.116 2.63-.338.52-.136.997-.317 1.472-.5.475-.183.932-.387 1.387-.6.455-.213.925-.417 1.413-.587.488-.17.995-.3 1.512-.36.517-.06 1.04-.051 1.56.03.52.08 1.026.244 1.5.495.47.25.906.584 1.292 1.004.386.42.716.916.969 1.475.253.56.428 1.168.513 1.82.085.65.075 1.34-.05 2.047-.125.707-.354 1.433-.69 2.14-.336.707-.765 1.387-1.292 2.04-.527.652-1.142 1.268-1.846 1.84-.703.573-1.486 1.096-2.35 1.573-.864.477-1.8.9-2.802 1.257-1.002.357-2.064.643-3.19.854-1.125.21-2.31.333-3.553.333-1.243 0-2.428-.122-3.553-.333-1.125-.21-2.187-.497-3.19-.854-1.002-.357-1.938-.78-2.802-1.257-.864-.477-1.647-1-2.35-1.573-.704-.572-1.32-1.188-1.846-1.84-.527-.653-.956-1.333-1.292-2.04-.336-.707-.565-1.433-.69-2.14-.125-.707-.135-1.397-.05-2.047.085-.652.26-1.26.513-1.82.253-.56.583-1.055.97-1.475.385-.42.82-.754 1.29-1.005.474-.25.98-.415 1.5-.495.52-.08 1.043-.09 1.56-.03.517.06 1.024.19 1.513.36.488.17.958.374 1.413.587.455.213.912.417 1.387.6.475.183.953.364 1.472.5.853.222 1.735.338 2.63.338.16 0 .32-.004.48-.01.17-.008.525-.082.87-.14 1.006-.175 1.836-.83 2.04-1.86.173-.888.936-1.57 1.713-1.572.776-.002 1.54.682 1.712 1.57.204 1.03 1.034 1.685 2.04 1.86.345.058.7.132.89.14.16.006.32.01.48.01.895 0 1.778-.116 2.63-.338.52-.136.997-.317 1.472-.5.475-.183.932-.387 1.387-.6.455-.213.925-.417 1.413-.587.488-.17.995-.3 1.512-.36.517-.06 1.04-.051 1.56.03.52.08 1.026.244 1.5.495.47.25.906.584 1.292 1.004.386.42.716.916.969 1.475.253.56.428 1.168.513 1.82.085.65.075 1.34-.05 2.047-.125.707-.354 1.433-.69 2.14-.336.707-.765 1.387-1.292 2.04-.527.652-1.142 1.268-1.846 1.84-.703.573-1.486 1.096-2.35 1.573-.864.477-1.8.9-2.802 1.257-1.002.357-2.064.643-3.19.854-1.125.21-2.31.333-3.553.333-1.243 0-2.428-.122-3.553-.333-1.125-.21-2.187-.497-3.19-.854-1.002-.357-1.938-.78-2.802-1.257-.864-.477-1.647-1-2.35-1.573-.704-.572-1.32-1.188-1.846-1.84-.527-.653-.956-1.333-1.292-2.04-.336-.707-.565-1.433-.69-2.14-.125-.707-.135-1.397-.05-2.047.085-.652.26-1.26.513-1.82.253-.56.583-1.055.97-1.475.385-.42.82-.754 1.29-1.005.474-.25.98-.415 1.5-.495.52-.08 1.043-.09 1.56-.03.517.06 1.024.19 1.513.36.488.17.958.374 1.413.587.455.213.912.417 1.387.6.475.183.953.364 1.472.5.853.222 1.735.338 2.63.338.16 0 .32-.004.48-.01.17-.008.525-.082.87-.14 1.006-.175 1.836-.83 2.04-1.86.173-.888.936-1.57 1.713-1.572.776-.002 1.54.682 1.712 1.57.204 1.03 1.034 1.685 2.04 1.86.345.058.7.132.89.14.16.006.32.01.48.01.895 0 1.778-.116 2.63-.338.52-.136.997-.317 1.472-.5.475-.183.932-.387 1.387-.6.455-.213.925-.417 1.413-.587.488-.17.995-.3 1.512-.36.517-.06 1.04-.051 1.56.03.52.08 1.026.244 1.5.495.47.25.906.584 1.292 1.004.386.42.716.916.969 1.475.253.56.428 1.168.513 1.82.085.65.075 1.34-.05 2.047-.125.707-.354 1.433-.69 2.14-.336.707-.765 1.387-1.292 2.04-.527.652-1.142 1.268-1.846 1.84-.703.573-1.486 1.096-2.35 1.573-.864.477-1.8.9-2.802 1.257-1.002.357-2.064.643-3.19.854-1.125.21-2.31.333-3.553.333-1.243 0-2.428-.122-3.553-.333-1.125-.21-2.187-.497-3.19-.854-1.002-.357-1.938-.78-2.802-1.257-.864-.477-1.647-1-2.35-1.573-.704-.572-1.32-1.188-1.846-1.84-.527-.653-.956-1.333-1.292-2.04-.336-.707-.565-1.433-.69-2.14-.125-.707-.135-1.397-.05-2.047.085-.652.26-1.26.513-1.82.253-.56.583-1.055.97-1.475.385-.42.82-.754 1.29-1.005.474-.25.98-.415 1.5-.495.52-.08 1.043-.09 1.56-.03.517.06 1.024.19 1.513.36.488.17.958.374 1.413.587.455.213.912.417 1.387.6.475.183.953.364 1.472.5.853.222 1.735.338 2.63.338.16 0 .32-.004.48-.01.17-.008.525-.082.87-.14 1.006-.175 1.836-.83 2.04-1.86.173-.888.936-1.57 1.713-1.572.776-.002 1.54.682 1.712 1.57.204 1.03 1.034 1.685 2.04 1.86.345.058.7.132.89.14.16.006.32.01.48.01.895 0 1.778-.116 2.63-.338.52-.136.997-.317 1.472-.5.475-.183.932-.387 1.387-.6.455-.213.925-.417 1.413-.587.488-.17.995-.3 1.512-.36.517-.06 1.04-.051 1.56.03.52.08 1.026.244 1.5.495.47.25.906.584 1.292 1.004.386.42.716.916.969 1.475.253.56.428 1.168.513 1.82.085.65.075 1.34-.05 2.047-.125.707-.354 1.433-.69 2.14-.336.707-.765 1.387-1.292 2.04-.527.652-1.142 1.268-1.846 1.84-.703.573-1.486 1.096-2.35 1.573-.864.477-1.8.9-2.802 1.257-1.002.357-2.064.643-3.19.854-1.125.21-2.31.333-3.553.333-1.243 0-2.428-.122-3.553-.333-1.125-.21-2.187-.497-3.19-.854-1.002-.357-1.938-.78-2.802-1.257-.864-.477-1.647-1-2.35-1.573-.704-.572-1.32-1.188-1.846-1.84-.527-.653-.956-1.333-1.292-2.04-.336-.707-.565-1.433-.69-2.14-.125-.707-.135-1.397-.05-2.047.085-.652.26-1.26.513-1.82.253-.56.583-1.055.97-1.475.385-.42.82-.754 1.29-1.005.474-.25.98-.415 1.5-.495.52-.08 1.043-.09 1.56-.03.517.06 1.024.19 1.513.36.488.17.958.374 1.413.587.455.213.912.417 1.387.6.475.183.953.364 1.472.5.853.222 1.735.338 2.63.338.16 0 .32-.004.48-.01.17-.008.525-.082.87-.14 1.006-.175 1.836-.83 2.04-1.86.173-.888.936-1.57 1.713-1.572.776-.002 1.54.682 1.712 1.57.204 1.03 1.034 1.685 2.04 1.86.345.058.7.132.89.14.16.006.32.01.48.01.895 0 1.778-.116 2.63-.338.52-.136.997-.317 1.472-.5.475-.183.932-.387 1.387-.6.455-.213.925-.417 1.413-.587.488-.17.995-.3 1.512-.36.517-.06 1.04-.051 1.56.03.52.08 1.026.244 1.5.495.47.25.906.584 1.292 1.004.386.42.716.916.969 1.475.253.56.428 1.168.513 1.82.085.65.075 1.34-.05 2.047-.125.707-.354 1.433-.69 2.14-.336.707-.765 1.387-1.292 2.04-.527.652-1.142 1.268-1.846 1.84-.703.573-1.486 1.096-2.35 1.573-.864.477-1.8.9-2.802 1.257-1.002.357-2.064.643-3.19.854-1.125.21-2.31.333-3.553.333-1.243 0-2.428-.122-3.553-.333-1.125-.21-2.187-.497-3.19-.854-1.002-.357-1.938-.78-2.802-1.257-.864-.477-1.647-1-2.35-1.573-.704-.572-1.32-1.188-1.846-1.84-.527-.653-.956-1.333-1.292-2.04-.336-.707-.565-1.433-.69-2.14-.125-.707-.135-1.397-.05-2.047.085-.652.26-1.26.513-1.82.253-.56.583-1.055.97-1.475.385-.42.82-.754 1.29-1.005.474-.25.98-.415 1.5-.495.52-.08 1.043-.09 1.56-.03.517.06 1.024.19 1.513.36.488.17.958.374 1.413.587.455.213.912.417 1.387.6.475.183.953.364 1.472.5.853.222 1.735.338 2.63.338.16 0 .32-.004.48-.01.17-.008.525-.082.87-.14 1.006-.175 1.836-.83 2.04-1.86.173-.888.936-1.57 1.713-1.572.776-.002 1.54.682 1.712 1.57.204 1.03 1.034 1.685 2.04 1.86.345.058.7.132.89.14.16.006.32.01.48.01.895 0 1.778-.116 2.63-.338.52-.136.997-.317 1.472-.5.475-.183.932-.387 1.387-.6.455-.213.925-.417 1.413-.587.488-.17.995-.3 1.512-.36.517-.06 1.04-.051 1.56.03.52.08 1.026.244 1.5.495.47.25.906.584 1.292 1.004.386.42.716.916.969 1.475.253.56.428 1.168.513 1.82.085.65.075 1.34-.05 2.047-.125.707-.354 1.433-.69 2.14-.336.707-.765 1.387-1.292 2.04-.527.652-1.142 1.268-1.846 1.84-.703.573-1.486 1.096-2.35 1.573-.864.477-1.8.9-2.802 1.257-1.002.357-2.064.643-3.19.854-1.125.21-2.31.333-3.553.333-1.243 0-2.428-.122-3.553-.333-1.125-.21-2.187-.497-3.19-.854-1.002-.357-1.938-.78-2.802-1.257-.864-.477-1.647-1-2.35-1.573-.704-.572-1.32-1.188-1.846-1.84-.527-.653-.956-1.333-1.292-2.04-.336-.707-.565-1.433-.69-2.14-.125-.707-.135-1.397-.05-2.047z' fill='%235c4033' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+        
+        .leaf-pattern {
+            background-color: #f8f9fa;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='%2371a95a' fill-opacity='0.1'%3E%3Cpath d='M0 0h80v80H0V0zm20 20v40h40V20H20zm20 35a15 15 0 1 1 0-30 15 15 0 0 1 0 30z' opacity='.5'/%3E%3Cpath d='M15 15h50l-5 5H20v40l-5 5V15zm0 50h50V15L80 0v80H0l15-15zm32.07-32.07l3.54-3.54A15 15 0 0 1 29.4 50.6l3.53-3.53a10 10 0 1 0 14.14-14.14zM32.93 47.07a10 10 0 1 1 14.14-14.14L32.93 47.07z'/%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .soil-texture {
+            background-color: #f5f5f5;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%235c4033' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+        
+        .wheat-pattern {
+            background-color: #f5deb3;
+            background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23b87333' fill-opacity='0.15'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--color-clay);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+        
+        .stat-card {
+            border-left: 4px solid var(--color-clay);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--color-clay);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .custom-input {
+            border: 1px solid #ddd;
+            transition: all 0.3s ease;
+        }
+        
+        .custom-input:focus {
+            border-color: var(--color-forest-green);
+            box-shadow: 0 0 0 3px rgba(44, 94, 26, 0.2);
+        }
+        
+        .footer-link {
+            transition: all 0.3s ease;
+        }
+        
+        .footer-link:hover {
+            transform: translateX(5px);
+        }
+        
+        /* Plant growth animation */
+        @keyframes grow {
+            0% { transform: scale(0.95); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(0.95); }
+        }
+        
+        .plant-icon {
+            animation: grow 3s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <!-- Logo placeholder - replace with your own logo -->
+                        <div class="logo-container mr-2">
+                            <div class="logo-placeholder">
+                                LOGO
+                            </div>
+                        </div>
+                        <span class="ml-2 text-xl font-bold text-[#5c4033]">Gulu Institution of Agriculture</span>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="#home" class="nav-link px-3 py-2 text-[#2c5e1a] hover:text-[#5c4033] font-medium">Home</a>
+                    <a href="#about" class="nav-link px-3 py-2 text-[#2c5e1a] hover:text-[#5c4033] font-medium">About</a>
+                    <a href="#courses" class="nav-link px-3 py-2 text-[#2c5e1a] hover:text-[#5c4033] font-medium">Courses</a>
+                    <a href="#apply" class="nav-link px-3 py-2 text-[#2c5e1a] hover:text-[#5c4033] font-medium">Apply</a>
+                    <a href="#contact" class="nav-link px-3 py-2 text-[#2c5e1a] hover:text-[#5c4033] font-medium">Contact</a>
+                    <a href="#" class="btn-primary px-5 py-2 rounded-md font-medium transition duration-300">Student Portal</a>
+                </div>
+                <div class="flex md:hidden items-center">
+                    <button id="mobile-menu-button" class="text-gray-500 hover:text-gray-700 focus:outline-none">
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-md">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#home" class="block px-3 py-2 text-[#2c5e1a] hover:bg-[#f5deb3] rounded-md">Home</a>
+                <a href="#about" class="block px-3 py-2 text-[#2c5e1a] hover:bg-[#f5deb3] rounded-md">About</a>
+                <a href="#courses" class="block px-3 py-2 text-[#2c5e1a] hover:bg-[#f5deb3] rounded-md">Courses</a>
+                <a href="#apply" class="block px-3 py-2 text-[#2c5e1a] hover:bg-[#f5deb3] rounded-md">Apply</a>
+                <a href="#contact" class="block px-3 py-2 text-[#2c5e1a] hover:bg-[#f5deb3] rounded-md">Contact</a>
+                <a href="#" class="block px-3 py-2 bg-[#2c5e1a] text-white rounded-md mt-2">Student Portal</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative overflow-hidden">
+        <div class="absolute inset-0 bg-[#2c5e1a] opacity-90 z-10"></div>
+        <div class="absolute inset-0 z-0">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="absolute bottom-0 left-0">
+                <path fill="#f5deb3" fill-opacity="0.2" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,218.7C672,235,768,245,864,234.7C960,224,1056,192,1152,176C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+            </svg>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 relative z-20">
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="text-white">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6">Cultivate Your Future at Gulu Institution of Agriculture</h1>
+                    <p class="text-lg mb-8 opacity-90">Providing quality agricultural education and training to develop skilled professionals for sustainable farming practices and food security in Uganda and beyond.</p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="https://drive.google.com/drive/folders/application-forms" target="_blank" class="bg-[#f5deb3] text-[#5c4033] hover:bg-[#e6c89c] px-6 py-3 rounded-md font-medium transition duration-300 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            Apply Now
+                        </a>
+                        <a href="#courses" class="bg-[#b87333] hover:bg-[#9e6329] text-white px-6 py-3 rounded-md font-medium transition duration-300 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                            </svg>
+                            Explore Courses
+                        </a>
+                    </div>
+                </div>
+                <div class="hidden md:flex justify-center">
+                    <!-- Logo placeholder in hero section - larger version -->
+                    <div class="logo-container" style="width: 200px; height: 200px;">
+                        <div class="logo-placeholder text-xl">
+                            YOUR LOGO
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Quick stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
+                <div class="bg-white bg-opacity-90 p-4 rounded-lg text-center">
+                    <div class="text-[#b87333] text-3xl font-bold">25+</div>
+                    <div class="text-[#2c5e1a] font-medium">Years of Excellence</div>
+                </div>
+                <div class="bg-white bg-opacity-90 p-4 rounded-lg text-center">
+                    <div class="text-[#b87333] text-3xl font-bold">500+</div>
+                    <div class="text-[#2c5e1a] font-medium">Acres of Training Land</div>
+                </div>
+                <div class="bg-white bg-opacity-90 p-4 rounded-lg text-center">
+                    <div class="text-[#b87333] text-3xl font-bold">95%</div>
+                    <div class="text-[#2c5e1a] font-medium">Graduate Employment</div>
+                </div>
+                <div class="bg-white bg-opacity-90 p-4 rounded-lg text-center">
+                    <div class="text-[#b87333] text-3xl font-bold">30+</div>
+                    <div class="text-[#2c5e1a] font-medium">Expert Instructors</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Decorative plants -->
+        <div class="absolute bottom-0 left-0 z-20">
+            <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 24 24" fill="none" stroke="#f5deb3" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="opacity-30">
+                <path d="M12 2v8"></path>
+                <path d="M12 18v4"></path>
+                <path d="M4.93 10.93l1.41 1.41"></path>
+                <path d="M17.66 17.66l1.41 1.41"></path>
+                <path d="M2 12h2"></path>
+                <path d="M20 12h2"></path>
+                <path d="M6.34 17.66l-1.41 1.41"></path>
+                <path d="M19.07 10.93l-1.41 1.41"></path>
+                <path d="M12 10a2 2 0 0 0-2 2c0 1.1.9 2 2 2 1.1 0 2-.9 2-2a2 2 0 0 0-2-2z"></path>
+            </svg>
+        </div>
+        <div class="absolute bottom-0 right-0 z-20">
+            <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 24 24" fill="none" stroke="#f5deb3" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="opacity-30">
+                <path d="M12 2v8"></path>
+                <path d="M12 18v4"></path>
+                <path d="M4.93 10.93l1.41 1.41"></path>
+                <path d="M17.66 17.66l1.41 1.41"></path>
+                <path d="M2 12h2"></path>
+                <path d="M20 12h2"></path>
+                <path d="M6.34 17.66l-1.41 1.41"></path>
+                <path d="M19.07 10.93l-1.41 1.41"></path>
+                <path d="M12 10a2 2 0 0 0-2 2c0 1.1.9 2 2 2 1.1 0 2-.9 2-2a2 2 0 0 0-2-2z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 wood-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-[#5c4033] mb-4 section-title">About Our Institution</h2>
+                <p class="text-gray-700 max-w-3xl mx-auto mt-6">Established in 1995, we are dedicated to providing comprehensive agricultural education that combines theoretical knowledge with practical skills.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-2xl font-semibold text-[#2c5e1a] mb-4">Excellence in Agricultural Education</h3>
+                    <p class="text-gray-700 mb-6">Gulu Institution of Agriculture is dedicated to providing comprehensive agricultural education that combines theoretical knowledge with practical skills. Our institution has been at the forefront of agricultural training in Uganda for over 25 years.</p>
+                    <p class="text-gray-700 mb-6">We pride ourselves on our experienced faculty, modern facilities, and extensive farmland that serves as a living laboratory for our students. Our graduates are well-equipped to tackle the challenges of modern agriculture and contribute to food security and sustainable development.</p>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-white p-4 rounded-lg shadow-md stat-card">
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#b87333]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                                </svg>
+                                <div class="ml-3">
+                                    <div class="text-[#5c4033] text-lg font-bold">12+</div>
+                                    <div class="text-gray-600 text-sm">Academic Programs</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-md stat-card">
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#b87333]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                                </svg>
+                                <div class="ml-3">
+                                    <div class="text-[#5c4033] text-lg font-bold">5,000+</div>
+                                    <div class="text-gray-600 text-sm">Alumni Network</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-md stat-card">
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#b87333]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                                </svg>
+                                <div class="ml-3">
+                                    <div class="text-[#5c4033] text-lg font-bold">15+</div>
+                                    <div class="text-gray-600 text-sm">Research Projects</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-md stat-card">
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#b87333]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <div class="ml-3">
+                                    <div class="text-[#5c4033] text-lg font-bold">20+</div>
+                                    <div class="text-gray-600 text-sm">Global Partners</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <div class="mb-6 border-l-4 border-[#b87333] pl-4">
+                        <h3 class="text-2xl font-semibold text-[#5c4033] mb-2">Our Mission</h3>
+                        <p class="text-gray-700">To educate and train skilled agricultural professionals who will drive innovation, sustainability, and productivity in the agricultural sector.</p>
+                    </div>
+                    
+                    <div class="mb-6 border-l-4 border-[#b87333] pl-4">
+                        <h3 class="text-2xl font-semibold text-[#5c4033] mb-2">Our Vision</h3>
+                        <p class="text-gray-700">To be the leading agricultural institution in East Africa, recognized for excellence in teaching, research, and community engagement.</p>
+                    </div>
+                    
+                    <h3 class="text-2xl font-semibold text-[#5c4033] mb-4">Core Values</h3>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="flex items-center bg-[#f5deb3] bg-opacity-50 p-3 rounded-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#b87333] mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span class="text-gray-800">Excellence</span>
+                        </div>
+                        <div class="flex items-center bg-[#f5deb3] bg-opacity-50 p-3 rounded-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#b87333] mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span class="text-gray-800">Innovation</span>
+                        </div>
+                        <div class="flex items-center bg-[#f5deb3] bg-opacity-50 p-3 rounded-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#b87333] mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span class="text-gray-800">Sustainability</span>
+                        </div>
+                        <div class="flex items-center bg-[#f5deb3] bg-opacity-50 p-3 rounded-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#b87333] mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span class="text-gray-800">Community</span>
+                        </div>
+                        <div class="flex items-center bg-[#f5deb3] bg-opacity-50 p-3 rounded-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#b87333] mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span class="text-gray-800">Integrity</span>
+                        </div>
+                        <div class="flex items-center bg-[#f5deb3] bg-opacity-50 p-3 rounded-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#b87333] mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span class="text-gray-800">Diversity</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="py-16 leaf-pattern">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-[#5c4033] mb-4 section-title">Our Courses</h2>
+                <p class="text-gray-700 max-w-3xl mx-auto mt-6">Explore our comprehensive range of agricultural programs designed to equip you with the knowledge and skills needed for a successful career in agriculture.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Course 1 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden course-card transition duration-300">
+                    <div class="h-3 bg-gradient-to-r from-[#2c5e1a] to-[#71a95a]"></div>
+                    <div class="relative">
+                        <div class="h-48 bg-[#2c5e1a] bg-opacity-10 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24 text-[#2c5e1a] opacity-50 plant-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                            </svg>
+                        </div>
+                        <div class="absolute top-4 right-4 bg-[#b87333] text-white text-xs font-bold px-3 py-1 rounded-full">Popular</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-[#5c4033] text-center mb-2">National Diploma in Animal Production and Management</h3>
+                        <div class="flex justify-center space-x-4 text-sm text-gray-600 mb-4">
+                            <span class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1 text-[#b87333]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                2 Years
+                            </span>
+                            <span class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1 text-[#b87333]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                                </svg>
+                                Full-time
+                            </span>
+                        </div>
+                        <p class="text-gray-600 mb-6 text-center">Comprehensive training in livestock management, animal health, breeding, nutrition, and sustainable animal production systems.</p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-6 justify-center">
+                            <span class="bg-[#f5deb3] bg-opacity-50 text-[#5c4033] text-xs px-2 py-1 rounded-full">Livestock Management</span>
+                            <span class="bg-[#f5deb3] bg-opacity-50 text-[#5c4033] text-xs px-2 py-1 rounded-full">Animal Health</span>
+                            <span class="bg-[#f5deb3] bg-opacity-50 text-[#5c4033] text-xs px-2 py-1 rounded-full">Breeding</span>
+                            <span class="bg-[#f5deb3] bg-opacity-50 text-[#5c4033] text-xs px-2 py-1 rounded-full">Nutrition</span>
+                        </div>
+                        
+                        <div class="border-t border-gray-200 pt-4">
+                            <div class="flex justify-between items-center">
+                                <span class="text-[#2c5e1a] font-semibold">Entry: O-Level Certificate</span>
+                                <a href="https://drive.google.com/drive/folders/application-forms" target="_blank" class="btn-primary px-4 py-2 rounded-md text-sm font-medium transition duration-300">Apply Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Course 2 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden course-card transition duration-300">
+                    <div class="h-3 bg-gradient-to-r from-[#2c5e1a] to-[#71a95a]"></div>
+                    <div class="relative">
+                        <div class="h-48 bg-[#2c5e1a] bg-opacity-10 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24 text-[#2c5e1a] opacity-50 plant-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-[#5c4033] text-center mb-2">National Diploma in Crop Production and Management</h3>
+                        <div class="flex justify-center space-x-4 text-sm text-gray-600 mb-4">
+                            <span class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1 text-[#b87333]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                2 Years
+                            </span>
+                            <span class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1 text-[#b87333]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                                </svg>
+                                Full-time
+                            </span>
+                        </div>
+                        <p class="text-gray-600 mb-6 text-center">Specialized training in crop science, soil management, pest control, irrigation systems, and sustainable farming practices.</p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-6 justify-center">
+                            <span class="bg-[#f5deb3] bg-opacity-50 text-[#5c4033] text-xs px-2 py-1 rounded-full">Crop Science</span>
+                            <span class="bg-[#f5deb3] bg-opacity-50 text-[#5c4033] text-xs px-2 py-1 rounded-full">Soil Management</span>
+                            <span class="bg-[#f5deb3] bg-opacity-50 text-[#5c4033] text-xs px-2 py-1 rounded-full">Pest Control</span>
+                            <span class="bg-[#f5deb3] bg-opacity-50 text-[#5c4033] text-xs px-2 py-1 rounded-full">Irrigation</span>
+                        </div>
+                        
+                        <div class="border-t border-gray-200 pt-4">
+                            <div class="flex justify-between items-center">
+                                <span class="text-[#2c5e1a] font-semibold">Entry: O-Level Certificate</span>
+                                <a href="https://drive.google.com/drive/folders/application-forms" target="_blank" class="btn-primary px-4 py-2 rounded-md text-sm font-medium transition duration-300">Apply Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Course 3 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden course-card transition duration-300">
+                    <div class="h-3 bg-gradient-to-r from-[#2c5e1a] to-[#71a95a]"></div>
+                    <div class="relative">
+                        <div class="h-48 bg-[#2c5e1a] bg-opacity-10 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24 text-[#2c5e1a] opacity-50 plant-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-[#5c4033] text-center mb-2">National Certificate in Agriculture Production and Management</h3>
+                        <div class="flex justify-center space-x-4 text-sm text-gray-600 mb-4">
+                            <span class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1 text-[#b87333]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                1 Year
+                            </span>
+                            <span class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1 text-[#b87333]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                                </svg>
+                                Full-time
+                            </span>
+                        </div>
+                        <p class="text-gray-600 mb-6 text-center">Foundation course covering both crop and animal production, farm management, and basic agricultural practices.</p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-6 justify-center">
+                            <span class="bg-[#f5deb3] bg-opacity-50 text-[#5c4033] text-xs px-2 py-1 rounded-full">Crop Production</span>
+                            <span class="bg-[#f5deb3] bg-opacity-50 text-[#5c4033] text-xs px-2 py-1 rounded-full">Animal Production</span>
+                            <span class="bg-[#f5deb3] bg-opacity-50 text-[#5c4033] text-xs px-2 py-1 rounded-full">Farm Management</span>
+                        </div>
+                        
+                        <div class="border-t border-gray-200 pt-4">
+                            <div class="flex justify-between items-center">
+                                <span class="text-[#2c5e1a] font-semibold">Entry: O-Level Certificate</span>
+                                <a href="https://drive.google.com/drive/folders/application-forms" target="_blank" class="btn-primary px-4 py-2 rounded-md text-sm font-medium transition duration-300">Apply Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Short Courses -->
+            <div class="mt-12 bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="bg-[#5c4033] text-white p-6">
+                    <h3 class="text-2xl font-semibold mb-2">Short Courses in Agriculture</h3>
+                    <p class="opacity-80">Specialized short courses for skill enhancement in specific agricultural areas. Perfect for working professionals and farmers looking to upgrade their skills.</p>
+                </div>
+                <div class="p-6">
+                    <div class="grid md:grid-cols-3 gap-4 mb-6">
+                        <div class="bg-[#f5deb3] bg-opacity-30 p-4 rounded-lg text-center hover:bg-opacity-50 transition duration-300">
+                            <div class="bg-white rounded-full h-12 w-12 flex items-center justify-center mx-auto mb-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#b87333]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+                                </svg>
+                            </div>
+                            <h4 class="font-medium text-[#5c4033]">Poultry Management</h4>
+                            <p class="text-sm text-gray-600 mt-1">1 Month</p>
+                            <a href="https://drive.google.com/drive/folders/application-forms" target="_blank" class="mt-3 inline-block text-sm text-[#2c5e1a] hover:underline">Apply Now</a>
+                        </div>
+                        <div class="bg-[#f5deb3] bg-opacity-30 p-4 rounded-lg text-center hover:bg-opacity-50 transition duration-300">
+                            <div class="bg-white rounded-full h-12 w-12 flex items-center justify-center mx-auto mb-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#b87333]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                                </svg>
+                            </div>
+                            <h4 class="font-medium text-[#5c4033]">Greenhouse Farming</h4>
+                            <p class="text-sm text-gray-600 mt-1">2 Months</p>
+                            <a href="https://drive.google.com/drive/folders/application-forms" target="_blank" class="mt-3 inline-block text-sm text-[#2c5e1a] hover:underline">Apply Now</a>
+                        </div>
+                        <div class="bg-[#f5deb3] bg-opacity-30 p-4 rounded-lg text-center hover:bg-opacity-50 transition duration-300">
+                            <div class="bg-white rounded-full h-12 w-12 flex items-center justify-center mx-auto mb-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#b87333]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+                                </svg>
+                            </div>
+                            <h4 class="font-medium text-[#5c4033]">Beekeeping</h4>
+                            <p class="text-sm text-gray-600 mt-1">1 Month</p>
+                            <a href="https://drive.google.com/drive/folders/application-forms" target="_blank" class="mt-3 inline-block text-sm text-[#2c5e1a] hover:underline">Apply Now</a>
+                        </div>
+                        <div class="bg-[#f5deb3] bg-opacity-30 p-4 rounded-lg text-center hover:bg-opacity-50 transition duration-300">
+                            <div class="bg-white rounded-full h-12 w-12 flex items-center justify-center mx-auto mb-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#b87333]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                </svg>
+                            </div>
+                            <h4 class="font-medium text-[#5c4033]">Organic Farming</h4>
+                            <p class="text-sm text-gray-600 mt-1">6 Weeks</p>
+                            <a href="https://drive.google.com/drive/folders/application-forms" target="_blank" class="mt-3 inline-block text-sm text-[#2c5e1a] hover:underline">Apply Now</a>
+                        </div>
+                        <div class="bg-[#f5deb3] bg-opacity-30 p-4 rounded-lg text-center hover:bg-opacity-50 transition duration-300">
+                            <div class="bg-white rounded-full h-12 w-12 flex items-center justify-center mx-auto mb-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#b87333]" fill="none" viewBox="0 0 24 24" stroke<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'946d521637dbc839',t:'MTc0ODQzMDc4NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body)
+                                {var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
