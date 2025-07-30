@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gulu Institution of Agriculture – Online Brochure</title>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Montserrat', sans-serif; background: #fcfaf7;}
+    h1, h2, h3, h4 { font-family: 'Merriweather', serif; }
+    .section-title { position: relative; margin-bottom: 20px; }
+    .section-title::after {
+      content: "";
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: #b87333;
+      border-radius: 2px;
+      margin: 10px auto 0;
+    }
+    .fees-table th { background: #2c5e1a; color: #fff; }
+    .fees-table td, .fees-table th { padding: 12px 16px; }
+  </style>
+</head>
+<body>
+  <!-- Hero Section -->
+  <section class="bg-[#2c5e1a] text-white py-16">
+    <div class="max-w-3xl mx-auto text-center">
+      <h1 class="text-4xl font-bold mb-4">Gulu Institution of Agriculture</h1>
+      <p class="text-lg mb-6">Empowering the next generation of agricultural professionals through quality education and hands-on training.</p>
+      <a href="#apply" class="bg-[#f5deb3] text-[#5c4033] px-6 py-3 rounded-md font-semibold shadow hover:bg-[#e6c89c] transition">Apply Now</a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="py-12 max-w-5xl mx-auto px-4" id="about">
+    <h2 class="section-title text-3xl font-bold text-center text-[#5c4033]">About Us</h2>
+    <p class="text-center text-gray-700 max-w-3xl mx-auto">
+      Founded in 1995, Gulu Institution of Agriculture is dedicated to providing comprehensive agricultural education, blending theoretical knowledge with practical experience. Our mission is to shape skilled professionals ready to drive innovation, sustainability, and productivity in agriculture.
+    </p>
+  </section>
+
+  <!-- Programs Offered Section -->
+  <section class="py-12 max-w-5xl mx-auto px-4" id="programs">
+    <h2 class="section-title text-3xl font-bold text-center text-[#5c4033]">Programs Offered</h2>
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="bg-white rounded-xl shadow p-6">
+        <h3 class="text-xl font-semibold text-[#2c5e1a] mb-2">National Diploma in Animal Production and Management</h3>
+        <ul class="text-gray-700 list-disc ml-5 mb-3">
+          <li>Duration: 2 Years, Full-time</li>
+          <li>Subjects: Livestock Management, Animal Health, Breeding, Nutrition</li>
+          <li>Entry: O-Level Certificate</li>
+        </ul>
+      </div>
+      <div class="bg-white rounded-xl shadow p-6">
+        <h3 class="text-xl font-semibold text-[#2c5e1a] mb-2">National Diploma in Crop Production and Management</h3>
+        <ul class="text-gray-700 list-disc ml-5 mb-3">
+          <li>Duration: 2 Years, Full-time</li>
+          <li>Subjects: Crop Science, Soil Management, Pest Control, Irrigation</li>
+          <li>Entry: O-Level Certificate</li>
+        </ul>
+      </div>
+      <div class="bg-white rounded-xl shadow p-6">
+        <h3 class="text-xl font-semibold text-[#2c5e1a] mb-2">National Certificate in Agriculture Production and Management</h3>
+        <ul class="text-gray-700 list-disc ml-5 mb-3">
+          <li>Duration: 1 Year, Full-time</li>
+          <li>Subjects: Crop Production, Animal Production, Farm Management</li>
+          <li>Entry: O-Level Certificate</li>
+        </ul>
+      </div>
+      <div class="bg-white rounded-xl shadow p-6">
+        <h3 class="text-xl font-semibold text-[#2c5e1a] mb-2">Short Courses</h3>
+        <ul class="text-gray-700 list-disc ml-5 mb-3">
+          <li>Poultry Management (1 month)</li>
+          <li>Greenhouse Farming (2 months)</li>
+          <li>Beekeeping (1 month)</li>
+          <li>Organic Farming (6 weeks)</li>
+          <!-- Add more as needed -->
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fees Structure Section -->
+  <section class="py-12 max-w-4xl mx-auto px-4" id="fees">
+    <h2 class="section-title text-3xl font-bold text-center text-[#5c4033]">Fees Structure</h2>
+    <div class="overflow-x-auto">
+      <table class="w-full border-collapse fees-table text-left mt-4 shadow rounded-lg bg-white">
+        <thead>
+          <tr>
+            <th>Program</th>
+            <th>Duration</th>
+            <th>Tuition Per Semester</th>
+            <th>Other Fees</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>National Diploma in Animal Production & Management</td>
+            <td>2 Years</td>
+            <td>UGX 1,200,000</td>
+            <td>Registration: UGX 100,000<br>Exams: UGX 80,000</td>
+          </tr>
+          <tr>
+            <td>National Diploma in Crop Production & Management</td>
+            <td>2 Years</td>
+            <td>UGX 1,200,000</td>
+            <td>Registration: UGX 100,000<br>Exams: UGX 80,000</td>
+          </tr>
+          <tr>
+            <td>National Certificate in Agriculture Production & Management</td>
+            <td>1 Year</td>
+            <td>UGX 900,000</td>
+            <td>Registration: UGX 100,000<br>Exams: UGX 80,000</td>
+          </tr>
+          <tr>
+            <td>Short Courses</td>
+            <td>1–2 Months</td>
+            <td>UGX 150,000–350,000</td>
+            <td>Materials: UGX 30,000</td>
+          </tr>
+          <!-- Add or edit rows as needed -->
+        </tbody>
+      </table>
+    </div>
+    <p class="text-sm text-gray-600 mt-4">*Fees are subject to change. Please contact the admissions office for the latest information.</p>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="py-12 max-w-3xl mx-auto px-4" id="contact">
+    <h2 class="section-title text-3xl font-bold text-center text-[#5c4033]">Contact Us</h2>
+    <div class="text-center text-gray-700 mt-6">
+      <p>Gulu Institution of Agriculture</p>
+      <p>P.O. Box [xxx], Gulu, Uganda</p>
+      <p>Phone: +256 xxx xxx xxx</p>
+      <p>Email: info@guluinstitute.ac.ug</p>
+      <a href="https://drive.google.com/drive/folders/application-forms" class="inline-block bg-[#2c5e1a] text-white px-4 py-2 rounded mt-3">Download Application Form</a>
+    </div>
+  </section>
+
+  <footer class="py-6 text-center text-gray-500 bg-[#f5deb3] mt-10">
+    &copy; 2025 Gulu Institution of Agriculture. All rights reserved.
+  </footer>
+</body>
+</html>
