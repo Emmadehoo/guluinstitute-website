@@ -89,10 +89,10 @@
       <table class="w-full border-collapse fees-table text-left mt-4 shadow rounded-lg bg-white">
         <thead>
           <tr>
-            <th>Program</th>
-            <th>Duration</th>
-            <th>Tuition Per Semester</th>
-            <th>Other Fees</th>
+            <th scope="col">Program</th>
+            <th scope="col">Duration</th>
+            <th scope="col">Tuition Per Semester</th>
+            <th scope="col">Other Fees</th>
           </tr>
         </thead>
         <tbody>
@@ -132,10 +132,10 @@
     <h2 class="section-title text-3xl font-bold text-center text-[#5c4033]">Contact Us</h2>
     <div class="text-center text-gray-700 mt-6">
       <p>Gulu Institution of Agriculture</p>
-      <p>P.O. Box [xxx], Gulu, Uganda</p>
-      <p>Phone: +256 xxx xxx xxx</p>
+      <p>P.O. Box [Your Box Number], Gulu, Uganda</p>
+      <p>Phone: +256 [Your Phone Number]</p>
       <p>Email: info@guluinstitute.ac.ug</p>
-      <a href="https://drive.google.com/drive/folders/application-forms" class="inline-block bg-[#2c5e1a] text-white px-4 py-2 rounded mt-3">Download Application Form</a>
+      <a href="https://drive.google.com/drive/folders/[your-application-form-link]" class="inline-block bg-[#2c5e1a] text-white px-4 py-2 rounded mt-3">Download Application Form</a>
     </div>
   </section>
 
